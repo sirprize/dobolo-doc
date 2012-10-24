@@ -1,0 +1,5 @@
+.DS_Store
+_assets/*
+_deploy/*
+_development/*
+_production/*

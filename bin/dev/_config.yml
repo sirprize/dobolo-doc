@@ -1,0 +1,6 @@
+safe:           false
+source:         ../../html
+destination:    ../../_development
+
+# custom vars
+env:            dev

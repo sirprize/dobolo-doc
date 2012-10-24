@@ -1,0 +1,86 @@
+<?xml version="1.0"  encoding="UTF-8" ?>
+
+<project name="Dijitive" default="end">
+    
+    <!-- Setting some vars -->
+    <tstamp>
+        <format property="dateTime" pattern="%Y%m%d%H%M" />
+    </tstamp>
+    
+    <property name="rootDir" value="../.." />
+    <property name="assetDirDeployName" value="assets-${dateTime}" />
+    
+    <!-- Create development build -->
+    <target name="development-build">
+        <echo>// Deleting existing development html dir...</echo>
+        <delete dir="${rootDir}/_development" includeemptydirs="true" verbose="false" failonerror="true" />
+        
+        <echo>// Creating new dir for development html...</echo>
+        <mkdir dir="${rootDir}/_development" />
+        
+        <echo>// Running jekyll to create development html...</echo>
+        <exec command="jekyll" dir="../dev" />
+    </target>
+    
+    <!-- Create production build -->
+    <target name="production-build" depends="development-build">
+        <echo>// Deleting existing production html dir...</echo>
+        <delete dir="${rootDir}/_production" includeemptydirs="true" verbose="false" failonerror="true" />
+        
+        <echo>// Creating new dir for production html...</echo>
+        <mkdir dir="${rootDir}/_production" />
+        
+        <echo>// Running jekyll to create production html...</echo>
+        <exec command="jekyll" dir="../prod" />
+        
+        <echo>// Deleting existing assets...</echo>
+        <delete dir="${rootDir}/_assets" includeemptydirs="true" verbose="false" failonerror="true" />
+        
+        <echo>// Running Dojo Builder...</echo>
+        <exec command="./assets.sh" dir="../prod" />
+    </target>
+    
+    <!-- Create deployment build -->
+    <target name="deployment-build" depends="production-build">
+        <echo>// Deleting existing deploy dir...</echo>
+        <delete dir="${rootDir}/_deploy" includeemptydirs="true" verbose="false" failonerror="true" />
+        
+        <echo>// Creating new deploy dir...</echo>
+        <mkdir dir="${rootDir}/_deploy" />
+        
+        <echo>// Creating .nojekyll file...</echo>
+        <exec command="echo '' > .nojekyll" dir="${rootDir}/_deploy" />
+        
+        <echo>// Copying production HTML to deploy dir...</echo>
+        <copy todir="${rootDir}/_deploy">
+            <fileset dir="${rootDir}/_production" />
+        </copy>
+        
+        <echo>// Adjusting asset paths in HTML...</echo>
+        <reflexive>
+            <fileset dir="${rootDir}/_deploy">
+                <include pattern="index.html" />
+            </fileset>
+            
+            <filterchain>
+                <replaceregexp>
+                    <regexp pattern="\.\.\/_assets" replace="${assetDirDeployName}" />
+                    <regexp pattern="\/\* Google Analytics" replace="" />
+                    <regexp pattern="End Google Analytics \*\/" replace="" />
+                </replaceregexp>
+            </filterchain>
+        </reflexive>
+        
+        <echo>// Copying assets (production build) to deploy dir...</echo>
+        <copy todir="${rootDir}/_deploy/assets-${dateTime}">
+            <fileset dir="${rootDir}/_assets">
+                <exclude name="build-report.txt" />
+            </fileset>
+        </copy>
+    </target>
+    
+    <!-- The end of all things -->
+    <target name="end"  depends="deployment-build">
+        <echo>// The End...</echo>
+    </target>
+</project>

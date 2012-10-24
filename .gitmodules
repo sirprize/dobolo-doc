@@ -1,0 +1,15 @@
+[submodule "assets/vendor/dojo/dojo"]
+	path = assets/vendor/dojo/dojo
+	url = git://github.com/dojo/dojo.git
+[submodule "assets/vendor/dojo/dijit"]
+	path = assets/vendor/dojo/dijit
+	url = git://github.com/dojo/dijit.git
+[submodule "assets/vendor/dojo/util"]
+	path = assets/vendor/dojo/util
+	url = git://github.com/dojo/util.git
+[submodule "assets/vendor/twitter/bootstrap"]
+	path = assets/vendor/twitter/bootstrap
+	url = git://github.com/twitter/bootstrap.git
+[submodule "assets/vendor/sirprize/dobolo"]
+	path = assets/vendor/sirprize/dobolo
+	url = git://github.com/sirprize/dobolo.git

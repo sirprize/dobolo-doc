@@ -1,0 +1,6 @@
+safe:           false
+source:         ../../html
+destination:    ../../_production
+
+# custom vars
+env:            prod
