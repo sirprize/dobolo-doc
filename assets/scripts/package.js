@@ -4,7 +4,8 @@ var profile = (function () {
             "frontend/package": 1
         },
         amdExcludes = {},
-        isTestRe = /\/test\//
+        isTestRe = /\/test\//,
+        isPrettify = /\/google-code-prettify\//
     ;
 
     return {
@@ -22,7 +23,7 @@ var profile = (function () {
             },
 
             copyOnly: function (filename, mid) {
-                return false;
+                return isPrettify.test(filename);
             }
         }
     };

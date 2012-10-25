@@ -55,7 +55,7 @@ var domExtraStuff = [
 var widgetCommonStuff = [
     "dijit/_TemplatedMixin"
 ];
-
+/*
 var widgetExtraStuff = [
     "dijit/_Widget"
 ];
@@ -75,19 +75,19 @@ var formTextStuff = [
     "dijitive/Textarea",
     "dijitive/Textbox"
 ];
-
+*/
 var baseStuff = noopStuff.concat(
     eventStuff,
     promiseStuff,
     browserStuff,
     ajaxStuff,
     domCommonStuff,
-    domExtraStuff,
+    domExtraStuff/*,
     widgetCommonStuff,
     widgetExtraStuff,
     formClickStuff,
     formSelectStuff,
-    formTextStuff
+    formTextStuff*/
 );
 
 
@@ -198,7 +198,7 @@ var profile = {
                 domCommonStuff,
                 domExtraStuff
             )
-        },
+        },/*
         "frontend/layer/widget-extra": {
             include: widgetExtraStuff,
             exclude: noopStuff.concat(
@@ -252,10 +252,11 @@ var profile = {
                 formClickStuff,
                 formSelectStuff
             )
-        },
+        },*/
         "frontend/index": {
             include: [
                 "dobolo/Affix",
+                "dobolo/Button",
                 "dobolo/Scrollspy"
             ],
             exclude: baseStuff

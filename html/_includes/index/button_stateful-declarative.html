@@ -1,0 +1,9 @@
+<script>
+    var load = function (ev) {
+        var button = this;
+        button.loading();
+        setTimeout(function () { button.reset(); }, 2000);
+    }
+</script>
+
+<button class="btn btn-primary" data-dojo-type="dobolo/Button" data-dojo-props="onClick: load, loadingText: 'Loading...', resetText: 'Loaded'">Load</button>
