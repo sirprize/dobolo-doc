@@ -55,39 +55,14 @@ var domExtraStuff = [
 var widgetCommonStuff = [
     "dijit/_TemplatedMixin"
 ];
-/*
-var widgetExtraStuff = [
-    "dijit/_Widget"
-];
 
-var formClickStuff = [
-    "dijitive/Button",
-    "dijitive/Checkbox",
-    "dijitive/Option",
-    "dijitive/Radio"
-];
-
-var formSelectStuff = [
-    "dijitive/Select"
-];
-
-var formTextStuff = [
-    "dijitive/Textarea",
-    "dijitive/Textbox"
-];
-*/
 var baseStuff = noopStuff.concat(
     eventStuff,
     promiseStuff,
     browserStuff,
     ajaxStuff,
     domCommonStuff,
-    domExtraStuff/*,
-    widgetCommonStuff,
-    widgetExtraStuff,
-    formClickStuff,
-    formSelectStuff,
-    formTextStuff*/
+    domExtraStuff
 );
 
 
@@ -109,7 +84,8 @@ var profile = {
         { name: "dijit", location: "../../assets/vendor/dojo/dijit" },
         { name: "dobolo", location: "../../assets/vendor/sirprize/dobolo" },
         { name: "frontend", location: "../../assets/scripts" },
-        { name: "frontend-styles", location: "../../assets/styles" }
+        { name: "frontend-styles", location: "../../assets/styles" },
+        { name: "other", location: "../../assets/other" }
     ],
  
     layers: {
@@ -198,66 +174,12 @@ var profile = {
                 domCommonStuff,
                 domExtraStuff
             )
-        },/*
-        "frontend/layer/widget-extra": {
-            include: widgetExtraStuff,
-            exclude: noopStuff.concat(
-                eventStuff,
-                promiseStuff,
-                browserStuff,
-                ajaxStuff,
-                domCommonStuff,
-                domExtraStuff,
-                widgetCommonStuff
-            )
         },
-        "frontend/layer/form-click": {
-            include: formClickStuff,
-            exclude: noopStuff.concat(
-                eventStuff,
-                promiseStuff,
-                browserStuff,
-                ajaxStuff,
-                domCommonStuff,
-                domExtraStuff,
-                widgetCommonStuff,
-                widgetExtraStuff
-            )
-        },
-        "frontend/layer/form-select": {
-            include: formSelectStuff,
-            exclude: noopStuff.concat(
-                eventStuff,
-                promiseStuff,
-                browserStuff,
-                ajaxStuff,
-                domCommonStuff,
-                domExtraStuff,
-                widgetCommonStuff,
-                widgetExtraStuff,
-                formClickStuff
-            )
-        },
-        "frontend/layer/form-text": {
-            include: formTextStuff,
-            exclude: noopStuff.concat(
-                eventStuff,
-                promiseStuff,
-                browserStuff,
-                ajaxStuff,
-                domCommonStuff,
-                domExtraStuff,
-                widgetCommonStuff,
-                widgetExtraStuff,
-                formClickStuff,
-                formSelectStuff
-            )
-        },*/
         "frontend/index": {
             include: [
                 "dobolo/Affix",
                 "dobolo/Button",
-                "dobolo/Scrollspy"
+                "dobolo/ScrollSpy"
             ],
             exclude: baseStuff
         }

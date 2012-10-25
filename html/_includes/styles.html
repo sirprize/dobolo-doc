@@ -1,0 +1,11 @@
+{% if site.env == "dev" %}
+    <link rel="stylesheet" href="../assets/styles/bootstrap-common.css">
+    <link rel="stylesheet" href="../assets/styles/bootstrap-responsive.css">
+    <link rel="stylesheet" href="../assets/styles/bootstrap-docs.css">
+    <link rel="stylesheet" href="../assets/other/google-code-prettify/prettify.css">
+{% else %}
+    <link rel="stylesheet" href="../_assets/frontend-styles/bootstrap-common.css">
+    <link rel="stylesheet" href="../_assets/frontend-styles/bootstrap-responsive.css">
+    <link rel="stylesheet" href="../_assets/frontend-styles/bootstrap-docs.css">
+    <link rel="stylesheet" href="../_assets/other/google-code-prettify/prettify.css">
+{% endif %}

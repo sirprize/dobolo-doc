@@ -1,10 +1,10 @@
 # dobolo-doc-generator
 
-Static documentation generator infrastructure for the dobolo project - [http://sirprize.github.com/dobolo](http://sirprize.github.com/dobolo)
+Documentation generator for the dobolo project - [http://sirprize.github.com/dobolo](http://sirprize.github.com/dobolo)
 
-## Information
+## About
 
-This project was started off on the [static-dojo-site-generator](https://github.com/sirprize/static-dojo-site-generator) project.
+[static-dojo-site-generator](https://github.com/sirprize/static-dojo-site-generator) was the boilerplate and starting point for this documentation generator.
 
 ## License
 

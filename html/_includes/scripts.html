@@ -1,0 +1,17 @@
+{% if site.env == "dev" %}
+    <script src="../assets/other/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" src="../assets/scripts/config.js"></script>
+    <script type="text/javascript" src="../assets/vendor/dojo/dojo/dojo.js"></script>
+    <script type="text/javascript" src="../assets/scripts/index.js"></script>
+{% else %}
+    <script src="../_assets/other/google-code-prettify/prettify.js"></script>
+    <script type="text/javascript" data-dojo-config="async: true, parseOnLoad: true" src="../_assets/dojo/dojo.js"></script>
+    <script type="text/javascript" src="../_assets/frontend/layer/event.js"></script>
+    <script type="text/javascript" src="../_assets/frontend/layer/promise.js"></script>
+    <script type="text/javascript" src="../_assets/frontend/layer/browser.js"></script>
+    <script type="text/javascript" src="../_assets/frontend/layer/ajax.js"></script>
+    <script type="text/javascript" src="../_assets/frontend/layer/dom-common.js"></script>
+    <script type="text/javascript" src="../_assets/frontend/layer/dom-extra.js"></script>
+    <script type="text/javascript" src="../_assets/frontend/layer/widget-common.js"></script>
+    <script type="text/javascript" src="../_assets/frontend/index.js"></script>
+{% endif %}

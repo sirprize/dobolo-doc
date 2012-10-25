@@ -11,42 +11,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        <!--<link rel="stylesheet" href="http://yandex.st/highlightjs/6.2/styles/solarized_dark.min.css">-->
-        <!--<link href="../assets/vendor/twitter/bootstrap/docs/assets/js/google-code-prettify/prettify.css" rel="stylesheet">-->
-        
-        {% if site.env == "dev" %}
-            <link rel="stylesheet" href="../assets/styles/bootstrap-common.css">
-            <link rel="stylesheet" href="../assets/styles/bootstrap-responsive.css">
-            <link rel="stylesheet" href="../assets/styles/bootstrap-docs.css">
-            <link rel="stylesheet" href="../assets/scripts/google-code-prettify/prettify.css">
-        {% else %}
-            <link rel="stylesheet" href="../_assets/frontend-styles/bootstrap-common.css">
-            <link rel="stylesheet" href="../_assets/frontend-styles/bootstrap-responsive.css">
-            <link rel="stylesheet" href="../_assets/frontend-styles/bootstrap-docs.css">
-            <link rel="stylesheet" href="../_assets/frontend/google-code-prettify/prettify.css">
-        {% endif %}
-        
-        <!--[if lt IE 9]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+        {% include styles.html %}
+        {% include html5shim.html %}
     </head>
 
     <body>
-
-        <!-- Navbar -->
-        <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <div class="nav-collapse collapse">
-                        <ul class="nav">
-                            <li class="">
-                                <a href="https://github.com/sirprize/dobolo">Dobolo on Github</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {% include navbar.html %}
 
         <!-- Subhead -->
         <header class="jumbotron subhead" id="overview">
@@ -77,12 +47,12 @@
                         </div>
                         
                         <h3>Declarative</h3>
-                        {% capture affix_declarative %}{% include index/affix_declarative.html %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ affix_declarative | escape }}</pre>
+                        {% capture snippet %}{% include index/affix.html %}{% endcapture %}
+                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
                         
                         <h3>Programmatic</h3>
-                        {% capture affix_programmatic %}{% include index/affix_programmatic.html %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ affix_programmatic | escape }}</pre>
+                        {% capture snippet %}{% include index/affix.js %}{% endcapture %}
+                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
                         
                         <h3>Properties</h3>
                         <table class="table table-bordered">
@@ -117,16 +87,16 @@
                         <h2>Stateful Button</h2>
                         
                         <div class="bs-docs-example">
-                            {% include index/button_stateful-declarative.html %}
+                            {% include index/button-stateful.html %}
                         </div>
                         
                         <h3>Declarative</h3>
-                        {% capture button_declarative %}{% include index/button_stateful-declarative.html %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ button_declarative | escape }}</pre>
+                        {% capture snippet %}{% include index/button-stateful.html %}{% endcapture %}
+                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
                         
                         <h3>Programmatic</h3>
-                        {% capture button_programmatic %}{% include index/button_stateful-programmatic.html %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ button_programmatic | escape }}</pre>
+                        {% capture snippet %}{% include index/button-stateful.js %}{% endcapture %}
+                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
                         
                         
                         <h3>Properties</h3>
@@ -180,58 +150,8 @@
             </div>
         </div>
         
-        <!-- Footer -->
-        <footer class="footer">
-            <div class="container">
-                <p class="pull-right"><a href="#">Back to top</a></p>
-                <p>Big thanks go out to the <a href="http://dojotoolkit.org">Dojo community</a> and the <a href="http://twitter.github.com/bootstrap">Twitter Bootstrap crew</a></p>
-                <p>This documentation has been generated with <a href="http://github.com/sirprize/static-dojo-site-generator">static-dojo-site-generator</a></p>
-                {% comment %}
-                <ul class="footer-links">
-                    <li><a href="">aaa</a></li>
-                    <li><a href="">bbb</a></li>
-                </ul>
-                {% endcomment %}
-            </div>
-        </footer>
-        
-        <!--<script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>-->
-        <!--<script src="../assets/vendor/twitter/bootstrap/docs/assets/js/google-code-prettify/prettify.js"></script>-->
-        
-        {% if site.env == "dev" %}
-            <script src="../assets/scripts/google-code-prettify/prettify.js"></script>
-            <script type="text/javascript" src="../assets/scripts/config.js"></script>
-            <script type="text/javascript" src="../assets/vendor/dojo/dojo/dojo.js"></script>
-            <script type="text/javascript" src="../assets/scripts/index.js"></script>
-        {% else %}
-            <script src="../_assets/frontend/google-code-prettify/prettify.js"></script>
-            <script type="text/javascript" data-dojo-config="async: true, parseOnLoad: true" src="../_assets/dojo/dojo.js"></script>
-            <script type="text/javascript" src="../_assets/frontend/layer/event.js"></script>
-            <script type="text/javascript" src="../_assets/frontend/layer/promise.js"></script>
-            <script type="text/javascript" src="../_assets/frontend/layer/browser.js"></script>
-            <script type="text/javascript" src="../_assets/frontend/layer/ajax.js"></script>
-            <script type="text/javascript" src="../_assets/frontend/layer/dom-common.js"></script>
-            <script type="text/javascript" src="../_assets/frontend/layer/dom-extra.js"></script>
-            <script type="text/javascript" src="../_assets/frontend/layer/widget-common.js"></script>
-            {% comment %}
-            <script type="text/javascript" src="../_assets/frontend/layer/widget-extra.js"></script>
-            <script type="text/javascript" src="../_assets/frontend/layer/form-click.js"></script>
-            <script type="text/javascript" src="../_assets/frontend/layer/form-select.js"></script>
-            <script type="text/javascript" src="../_assets/frontend/layer/form-text.js"></script>
-            {% endcomment %}
-            <script type="text/javascript" src="../_assets/frontend/index.js"></script>
-        {% endif %}
-        
-        <script>/* Google Analytics
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-35397940-1']);
-            _gaq.push(['_trackPageview']);
-
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-        End Google Analytics */</script>
+        {% include footer.html %}
+        {% include scripts.html %}
+        {% include analytics.html %}
     </body>
 </html>

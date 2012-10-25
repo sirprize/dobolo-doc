@@ -1,13 +1,13 @@
 require([
     "dobolo/Affix",
-    "dobolo/Scrollspy",
+    "dobolo/ScrollSpy",
     "dojo/_base/window",
     "dojo/query",
     "dojo/parser",
     "dojo/domReady!"
 ], function (
     Affix,
-    Scrollspy,
+    ScrollSpy,
     baseWin,
     query,
     parser
@@ -24,7 +24,7 @@ require([
         }
     }, query('.bs-docs-sidenav')[0]);
     
-    var scrollSpy = new Scrollspy({
+    var scrollSpy = new ScrollSpy({
         targetSelector: '.bs-docs-sidenav',
         offsetNodeSelector: 'section.spy',
         offsetTop: 70,
