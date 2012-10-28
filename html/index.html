@@ -2,6 +2,20 @@
 ---
 
 {% assign affixDoc = 'http://twitter.github.com/bootstrap/javascript.html#affix' %}
+{% assign buttonDijitDoc = 'http://dojotoolkit.org/reference-guide/1.8/dijit/form/Button.html' %}
+{% assign buttonCssDoc = 'http://twitter.github.com/bootstrap/base-css.html#buttons' %}
+{% assign alertCssDoc = 'http://twitter.github.com/bootstrap/components.html#alerts' %}
+{% assign xxx = '' %}
+{% assign xxx = '' %}
+{% assign xxx = '' %}
+{% assign xxx = '' %}
+{% assign xxx = '' %}
+{% assign xxx = '' %}
+{% assign xxx = '' %}
+{% assign xxx = '' %}
+{% assign xxx = '' %}
+{% assign xxx = '' %}
+{% assign xxx = '' %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +29,7 @@
         {% include html5shim.html %}
     </head>
 
-    <body>
+    <body data-dojo-type="dobolo/ScrollSpy" data-dojo-props="targetSelector: '.bs-docs-sidenav', offsetsSelector: 'section.spy', offsetTop: 70, wait: 100">
         {% include navbar.html %}
 
         <!-- Subhead -->
@@ -31,9 +45,18 @@
             <!-- Docs nav -->
             <div class="row">
                 <div class="span3 bs-docs-sidebar">
-                    <ul class="nav nav-list bs-docs-sidenav">
+                    <script>
+                        var offsetTop = function () {
+                            return document.width <= 980 ? 245 : 195;
+                        }
+                    </script>
+                    
+                    <ul class="nav nav-list bs-docs-sidenav" data-dojo-type="dobolo/Affix" data-dojo-props="offsetTop: offsetTop">
                         <li><a href="#affix"><i class="icon-chevron-right"></i> Affix</a></li>
+                        <li><a href="#alert"><i class="icon-chevron-right"></i> Alert</a></li>
                         <li><a href="#button"><i class="icon-chevron-right"></i> Button</a></li>
+                        <li><a href="#datepickerinput"><i class="icon-chevron-right"></i> DatepickerInput</a></li>
+                        <li><a href="#scrollspy"><i class="icon-chevron-right"></i> ScrollSpy</a></li>
                     </ul>
                 </div>
             
@@ -44,6 +67,10 @@
                         <div class="page-header">
                             <h1>Affix</h1>
                             <p>Add affix behavior to any element. Use offsets to define when to toggle the pinning of an element on and off.</p>
+                        </div>
+                        
+                        <div class="bs-docs-example">
+                            The subnavigation on the left is a live demo of the <code>Affix</code> module.
                         </div>
                         
                         <h3>Declarative</h3>
@@ -66,13 +93,89 @@
                             <tbody>
                                 <tr>
                                     <td>offsetTop</td>
-                                    <td>Number</td>
+                                    <td>number, function</td>
                                     <td>0</td>
                                 </tr>
                                 <tr>
                                     <td>offsetBottom</td>
-                                    <td>Number</td>
+                                    <td>number, function</td>
                                     <td>0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    
+                    <!-- Alert -->
+                    <section id="alert" class="spy">
+                        <div class="page-header">
+                            <h1>Alert</h1>
+                            <p><a href="{{ alertCssDoc }}">Find the Bootstrap CSS reference for alerts</a> on the Bootstrap website. For the closing animation to work, please make sure to reference the Bootstrap <code>component-animations.less</code> stylesheet.</p>
+                        </div>
+                        
+                        <div class="bs-docs-example">
+                            {% include index/alert.html %}
+                        </div>
+                        
+                        <h3>Declarative</h3>
+                        {% capture snippet %}{% include index/alert.html %}{% endcapture %}
+                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        
+                        <h3>Programmatic</h3>
+                        {% capture snippet %}{% include index/alert.js %}{% endcapture %}
+                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        
+                        <h3>Properties</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>content</td>
+                                    <td>string</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>closable</td>
+                                    <td>boolean</td>
+                                    <td>true</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>Methods</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Returns</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>close()</td>
+                                    <td>undefined</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>Events</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>close</td>
+                                </tr>
+                                <tr>
+                                    <td>closed</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -82,6 +185,7 @@
                     <section id="button" class="spy">
                         <div class="page-header">
                             <h1>Button</h1>
+                            <p>Buttons have the same API as <a href="{{ buttonDijitDoc }}">dijit/form/Button</a> plus the properties and methods listed below. <a href="{{ buttonCssDoc }}">Find the Bootstrap CSS reference for buttons</a> on the Bootstrap website.</p>
                         </div>
                         
                         <h2>Stateful Button</h2>
@@ -98,6 +202,34 @@
                         {% capture snippet %}{% include index/button-stateful.js %}{% endcapture %}
                         <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
                         
+                        <h2>Checkbox Button</h2>
+                        
+                        <div class="bs-docs-example">
+                            {% include index/button-checkbox.html %}
+                        </div>
+                        
+                        <h3>Declarative</h3>
+                        {% capture snippet %}{% include index/button-checkbox.html %}{% endcapture %}
+                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        
+                        <h3>Programmatic</h3>
+                        {% capture snippet %}{% include index/button-checkbox.js %}{% endcapture %}
+                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        
+                        <h2>Radio Button</h2>
+                        
+                        <div class="bs-docs-example">
+                            {% include index/button-radio.html %}
+                        </div>
+                        
+                        <h3>Declarative</h3>
+                        {% capture snippet %}{% include index/button-radio.html %}{% endcapture %}
+                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        
+                        <h3>Programmatic</h3>
+                        {% capture snippet %}{% include index/button-radio.js %}{% endcapture %}
+                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        
                         
                         <h3>Properties</h3>
                         <table class="table table-bordered">
@@ -111,13 +243,23 @@
                             <tbody>
                                 <tr>
                                     <td>loadingText</td>
-                                    <td>String</td>
+                                    <td>string</td>
                                     <td>Loading...</td>
                                 </tr>
                                 <tr>
                                     <td>resetText</td>
-                                    <td>String</td>
+                                    <td>string</td>
                                     <td>Loaded</td>
+                                </tr>
+                                <tr>
+                                    <td>mode</td>
+                                    <td>string</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>group</td>
+                                    <td>string</td>
+                                    <td></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -127,25 +269,147 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Args</th>
                                     <th>Returns</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>loading()</td>
-                                    <td>--</td>
                                     <td>undefined</td>
                                 </tr>
                                 <tr>
                                     <td>reset()</td>
-                                    <td>--</td>
+                                    <td>undefined</td>
+                                </tr>
+                                <tr>
+                                    <td>toggle()</td>
                                     <td>undefined</td>
                                 </tr>
                             </tbody>
                         </table>
                     </section>
                     
+                    <!-- DatepickerInput -->
+                    <section id="datepickerinput" class="spy">
+                        <div class="page-header">
+                            <h1>DatepickerInput</h1>
+                            <p>Dropdown calendar to set a date into an input field. Please make sure to reference the Dobolo <code>calender.less</code> stylesheet and the Bootstrap <code>dropdowns.less</code> stylesheet. The <code>locale</code> for your calendar can be set in <code>dojoConfig</code>.
+                        </div>
+                        
+                        <div class="bs-docs-example">
+                            {% include index/datepickerinput.html %}
+                        </div>
+                        
+                        <h3>Declarative</h3>
+                        {% capture snippet %}{% include index/datepickerinput.html %}{% endcapture %}
+                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        
+                        <h3>Programmatic</h3>
+                        {% capture snippet %}{% include index/datepickerinput.js %}{% endcapture %}
+                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        
+                        <h3>Properties</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                    <th>Description</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>date</td>
+                                    <td>Date</td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>weekStart</td>
+                                    <td>number</td>
+                                    <td>0</td>
+                                    <td>0 for sunday, 1 for monday, 2 for tuesday etc</td>
+                                </tr>
+                                <tr>
+                                    <td>format</td>
+                                    <td>string</td>
+                                    <td>long</td>
+                                    <td>short, medium, long, full</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <h3>Events</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>show-calendar</td>
+                                </tr>
+                                <tr>
+                                    <td>hide-calendar</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
+                    
+                    <!-- ScrollSpy -->
+                    <section id="scrollspy" class="spy">
+                        <div class="page-header">
+                            <h1>ScrollSpy</h1>
+                        </div>
+                        
+                        <div class="bs-docs-example">
+                            <p>This page with the subnavigation on the left is a live demo of the <code>ScrollSpy</code> module applied to <code>&lt;body&gt;</code> and below is an example of <code>ScrollSpy</code> applied to an element with <code>overflow: auto</code></p>
+                            {% include index/scrollspy.html %}
+                        </div>
+                        
+                        <h3>Declarative</h3>
+                        {% capture snippet %}{% include index/scrollspy.html %}{% endcapture %}
+                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        
+                        <h3>Programmatic</h3>
+                        {% capture snippet %}{% include index/scrollspy.js %}{% endcapture %}
+                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        
+                        <h3>Properties</h3>
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Type</th>
+                                    <th>Default</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>targetSelector</td>
+                                    <td>string</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>offsetsSelector</td>
+                                    <td>string</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>offsetTop</td>
+                                    <td>number</td>
+                                    <td>0</td>
+                                </tr>
+                                <tr>
+                                    <td>wait</td>
+                                    <td>number</td>
+                                    <td>100</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </section>
                 </div>
             </div>
         </div>

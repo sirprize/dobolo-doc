@@ -5,11 +5,10 @@ var button = new Button({
     loadingText: 'Loading...',
     resetText: 'Loaded',
     onClick: function (ev) {
-        var b = this;
-        b.loading();
-        setTimeout(function () {
-            b.reset();
-        }, 2000);
+        this.loading();
+        setTimeout(lang.hitch(this, function () {
+            this.reset();
+        }), 2000);
     }
 }, 'my-button');
 

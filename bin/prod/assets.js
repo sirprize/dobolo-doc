@@ -56,13 +56,38 @@ var widgetCommonStuff = [
     "dijit/_TemplatedMixin"
 ];
 
+var widgetExtraStuff = [
+    "dijit/_Widget"
+];
+
+var calendarStuff = [
+    "dojo/date/stamp",
+    "dojo/date",
+    "dojo/date/locale",
+    "dojo/cldr/supplemental"
+];
+
+var miscStuff = [
+    "dojo/parser",
+    "dojo/_base/url",
+    "dijit/form/_FormWidget",
+    "dijit/_CssStateMixin",
+    "dijit/form/_FormWidgetMixin",
+    "dijit/form/_ButtonMixin",
+    "dojo/NodeList-traverse"
+];
+
 var baseStuff = noopStuff.concat(
     eventStuff,
     promiseStuff,
     browserStuff,
     ajaxStuff,
     domCommonStuff,
-    domExtraStuff
+    domExtraStuff,
+    widgetCommonStuff,
+    widgetExtraStuff,
+    calendarStuff,
+    miscStuff
 );
 
 
@@ -175,11 +200,55 @@ var profile = {
                 domExtraStuff
             )
         },
+        "frontend/layer/widget-extra": {
+            include: widgetExtraStuff,
+            exclude: noopStuff.concat(
+                eventStuff,
+                promiseStuff,
+                browserStuff,
+                ajaxStuff,
+                domCommonStuff,
+                domExtraStuff,
+                widgetCommonStuff
+            )
+        },
+        "frontend/layer/calendar": {
+            include: calendarStuff,
+            exclude: noopStuff.concat(
+                eventStuff,
+                promiseStuff,
+                browserStuff,
+                ajaxStuff,
+                domCommonStuff,
+                domExtraStuff,
+                widgetCommonStuff,
+                widgetExtraStuff
+            )
+        },
+        "frontend/layer/misc": {
+            include: miscStuff,
+            exclude: noopStuff.concat(
+                eventStuff,
+                promiseStuff,
+                browserStuff,
+                ajaxStuff,
+                domCommonStuff,
+                domExtraStuff,
+                widgetCommonStuff,
+                widgetExtraStuff,
+                calendarStuff
+            )
+        },
         "frontend/index": {
             include: [
                 "dobolo/Affix",
+                "dobolo/Alert",
                 "dobolo/Button",
-                "dobolo/ScrollSpy"
+                "dobolo/Calendar",
+                "dobolo/DatepickerInput",
+                "dobolo/ScrollSpy",
+                "dobolo/ScrollTopSpyHelper",
+                "dobolo/Util"
             ],
             exclude: baseStuff
         }
