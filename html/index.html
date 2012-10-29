@@ -5,17 +5,6 @@
 {% assign buttonDijitDoc = 'http://dojotoolkit.org/reference-guide/1.8/dijit/form/Button.html' %}
 {% assign buttonCssDoc = 'http://twitter.github.com/bootstrap/base-css.html#buttons' %}
 {% assign alertCssDoc = 'http://twitter.github.com/bootstrap/components.html#alerts' %}
-{% assign xxx = '' %}
-{% assign xxx = '' %}
-{% assign xxx = '' %}
-{% assign xxx = '' %}
-{% assign xxx = '' %}
-{% assign xxx = '' %}
-{% assign xxx = '' %}
-{% assign xxx = '' %}
-{% assign xxx = '' %}
-{% assign xxx = '' %}
-{% assign xxx = '' %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -293,7 +282,7 @@
                     <section id="datepickerinput" class="spy">
                         <div class="page-header">
                             <h1>DatepickerInput</h1>
-                            <p>Dropdown calendar to set a date into an input field. Please make sure to reference the Dobolo <code>calender.less</code> stylesheet and the Bootstrap <code>dropdowns.less</code> stylesheet. The <code>locale</code> for your calendar can be set in <code>dojoConfig</code>.
+                            <p>Dropdown calendar to set a date into an input field. Please make sure to reference the Dobolo <code>calender.less</code> and Bootstrap <code>dropdowns.less</code> stylesheets. The <code>locale</code> for the datepicker can be set in <code>dojoConfig</code>.
                         </div>
                         
                         <div class="bs-docs-example">
@@ -357,6 +346,28 @@
                             </tbody>
                         </table>
                     </section>
+                    
+                    {% comment %}
+                    <!-- Calendar -->
+                    <section id="datepickerinput" class="spy">
+                        <div class="page-header">
+                            <h1>Calendar</h1>
+                            <p>It's also possible to use the calendar standalone. Please make sure to reference the Dobolo <code>calender.less</code> stylesheet. The <code>locale</code> for the calendar can be set in <code>dojoConfig</code>.
+                        </div>
+                        
+                        <div class="bs-docs-example">
+                            {% include index/calendar.html %}
+                        </div>
+                        
+                        <h3>Declarative</h3>
+                        {% capture snippet %}{% include index/calendar.html %}{% endcapture %}
+                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        
+                        <h3>Programmatic</h3>
+                        {% capture snippet %}{% include index/calendar.js %}{% endcapture %}
+                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                    </section>
+                    {% endcomment %}
                     
                     <!-- ScrollSpy -->
                     <section id="scrollspy" class="spy">
