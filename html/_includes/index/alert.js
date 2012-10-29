@@ -1,6 +1,6 @@
 var alert = new Alert({
-    'class': 'alert-success fade in',
-    content: "<strong>Oh yeah!</strong> That's just lookin' fine",
+    'class': 'alert fade in',
+    content: "<strong><i><b>Holy guacamole!</b></i></strong> Best check yo self, you're not looking too good.",
     closable: true
 }, 'my-alert');
 
