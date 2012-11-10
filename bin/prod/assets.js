@@ -52,14 +52,6 @@ var domExtraStuff = [
     "dojo/query"
 ];
 
-var widgetCommonStuff = [
-    "dijit/_TemplatedMixin"
-];
-
-var widgetExtraStuff = [
-    "dijit/_Widget"
-];
-
 var calendarStuff = [
     "dojo/date/stamp",
     "dojo/date",
@@ -67,13 +59,28 @@ var calendarStuff = [
     "dojo/cldr/supplemental"
 ];
 
+var mijitStuff = [
+    "mijit/_TemplatedMixin",
+    "mijit/_WidgetBase",
+    "mijit/_WidgetsInTemplateMixin",
+    "mijit/Destroyable",
+    "mijit/main",
+    "mijit/registry"
+];
+
+var formStuff = [
+    "dojo-form-controls/Button",
+    "dojo-form-controls/Checkbox",
+    "dojo-form-controls/Option",
+    "dojo-form-controls/Radio",
+    "dojo-form-controls/Select",
+    "dojo-form-controls/Textarea",
+    "dojo-form-controls/Textbox"
+];
+
 var miscStuff = [
     "dojo/parser",
     "dojo/_base/url",
-    "dijit/form/_FormWidget",
-    "dijit/_CssStateMixin",
-    "dijit/form/_FormWidgetMixin",
-    "dijit/form/_ButtonMixin",
     "dojo/NodeList-traverse"
 ];
 
@@ -84,9 +91,9 @@ var baseStuff = noopStuff.concat(
     ajaxStuff,
     domCommonStuff,
     domExtraStuff,
-    widgetCommonStuff,
-    widgetExtraStuff,
     calendarStuff,
+    mijitStuff,
+    formStuff,
     miscStuff
 );
 
@@ -106,7 +113,8 @@ var profile = {
     selectorEngine: "acme",
     packages:[
         { name: "dojo", location: "../../assets/vendor/dojo/dojo" },
-        { name: "dijit", location: "../../assets/vendor/dojo/dijit" },
+        { name: "mijit", location: "../../assets/vendor/sirprize/mijit" },
+        { name: "dojo-form-controls", location: "../../assets/vendor/sirprize/dojo-form-controls" },
         { name: "dobolo", location: "../../assets/vendor/sirprize/dobolo" },
         { name: "frontend", location: "../../assets/scripts" },
         { name: "frontend-styles", location: "../../assets/styles" },
@@ -189,8 +197,8 @@ var profile = {
                 domCommonStuff
             )
         },
-        "frontend/layer/widget-common": {
-            include: widgetCommonStuff,
+        "frontend/layer/calendar": {
+            include: calendarStuff,
             exclude: noopStuff.concat(
                 eventStuff,
                 promiseStuff,
@@ -200,8 +208,8 @@ var profile = {
                 domExtraStuff
             )
         },
-        "frontend/layer/widget-extra": {
-            include: widgetExtraStuff,
+        "frontend/layer/mijit": {
+            include: mijitStuff,
             exclude: noopStuff.concat(
                 eventStuff,
                 promiseStuff,
@@ -209,11 +217,11 @@ var profile = {
                 ajaxStuff,
                 domCommonStuff,
                 domExtraStuff,
-                widgetCommonStuff
+                calendarStuff
             )
         },
-        "frontend/layer/calendar": {
-            include: calendarStuff,
+        "frontend/layer/form": {
+            include: formStuff,
             exclude: noopStuff.concat(
                 eventStuff,
                 promiseStuff,
@@ -221,8 +229,8 @@ var profile = {
                 ajaxStuff,
                 domCommonStuff,
                 domExtraStuff,
-                widgetCommonStuff,
-                widgetExtraStuff
+                calendarStuff,
+                mijitStuff
             )
         },
         "frontend/layer/misc": {
@@ -234,9 +242,9 @@ var profile = {
                 ajaxStuff,
                 domCommonStuff,
                 domExtraStuff,
-                widgetCommonStuff,
-                widgetExtraStuff,
-                calendarStuff
+                calendarStuff,
+                mijitStuff,
+                formStuff
             )
         },
         "frontend/index": {

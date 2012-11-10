@@ -1,9 +1,6 @@
 [submodule "assets/vendor/dojo/dojo"]
 	path = assets/vendor/dojo/dojo
 	url = git://github.com/dojo/dojo.git
-[submodule "assets/vendor/dojo/dijit"]
-	path = assets/vendor/dojo/dijit
-	url = git://github.com/dojo/dijit.git
 [submodule "assets/vendor/dojo/util"]
 	path = assets/vendor/dojo/util
 	url = git://github.com/dojo/util.git
@@ -13,3 +10,9 @@
 [submodule "assets/vendor/sirprize/dobolo"]
 	path = assets/vendor/sirprize/dobolo
 	url = git://github.com/sirprize/dobolo.git
+[submodule "assets/vendor/sirprize/mijit"]
+	path = assets/vendor/sirprize/mijit
+	url = git://github.com/sirprize/mijit.git
+[submodule "assets/vendor/sirprize/dojo-form-controls"]
+	path = assets/vendor/sirprize/dojo-form-controls
+	url = git://github.com/sirprize/dojo-form-controls.git

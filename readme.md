@@ -1,4 +1,4 @@
-# dobolo-doc-generator
+# dobolo-doc
 
 Documentation generator for the dobolo project - [http://sirprize.github.com/dobolo](http://sirprize.github.com/dobolo)
 
@@ -8,4 +8,4 @@ Documentation generator for the dobolo project - [http://sirprize.github.com/dob
 
 ## License
 
-dobolo-doc-generator is released under the [MIT license](http://opensource.org/licenses/mit-license.php)
+dobolo-doc is released under the [MIT license](http://opensource.org/licenses/mit-license.php)
