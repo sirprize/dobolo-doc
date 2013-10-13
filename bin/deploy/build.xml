@@ -1,6 +1,6 @@
 <?xml version="1.0"  encoding="UTF-8" ?>
 
-<project name="Dijitive" default="end">
+<project name="Dobolo" default="end">
     
     <!-- Setting some vars -->
     <tstamp>

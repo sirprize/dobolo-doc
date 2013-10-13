@@ -1,7 +1,7 @@
 var dp = new DatepickerInput({
-    date: new Date(),
+    value: new Date(),
     format: 'full',
-    'class': 'span4'
+    'class': 'form-control'
 }, 'my-datepicker-input');
 
 dp.on('show-calendar', function (ev) {

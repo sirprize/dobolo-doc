@@ -4,7 +4,7 @@ var profile = (function () {
             "other/package": 1
         },
         amdExcludes = {},
-        isPrettifyRe = /prettify\.js/
+        isJsRe = /\.js/
     ;
 
     return {
@@ -22,7 +22,7 @@ var profile = (function () {
             },
 
             copyOnly: function (filename, mid) {
-                return isPrettifyRe.test(filename);
+                return isJsRe.test(filename);
             }
         }
     };

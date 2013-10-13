@@ -1,74 +1,112 @@
 ---
 ---
 
-{% assign affixDoc = 'http://twitter.github.com/bootstrap/javascript.html#affix' %}
-{% assign buttonDijitDoc = 'http://dojotoolkit.org/reference-guide/1.8/dijit/form/Button.html' %}
-{% assign buttonCssDoc = 'http://twitter.github.com/bootstrap/base-css.html#buttons' %}
-{% assign alertCssDoc = 'http://twitter.github.com/bootstrap/components.html#alerts' %}
+{% assign buttonCssDoc = 'http://getbootstrap.com/components/#btn-groups' %}
+{% assign alertCssDoc = 'http://getbootstrap.com/components/#alerts' %}
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Dobolo - Dojo Bootstrap Love</title>
+        <title>dobolo - Dojo Bootstrap Love</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="">
         <meta name="author" content="">
-        {% include styles.html %}
-        {% include html5shim.html %}
+        
+        {% if site.env == "dev" %}
+            <link href="../assets/other/google-code-prettify/prettify.css" rel="stylesheet">
+            <link href="../assets/vendor/twbs/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+            <link href="../assets/vendor/twbs/bootstrap/docs-assets/css/docs.css" rel="stylesheet">
+            <link href="../assets/vendor/sirprize/dobolo/assets/calendar.css" rel="stylesheet">
+            <link href="../assets/styles/docs.css" rel="stylesheet">
+
+            <!--[if lt IE 9]>
+                <script src="../assets/vendor/twbs/bootstrap/docs-assets/js/html5shiv.js"></script>
+                <script src="../assets/vendor/twbs/bootstrap/docs-assets/js/respond.min.js"></script>
+            <![endif]-->
+        {% else %}
+            <link href="../_assets/other/google-code-prettify/prettify.css" rel="stylesheet">
+            <link href="../_assets/other/twbs/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+            <link href="../_assets/other/twbs/bootstrap/docs-assets/css/docs.css" rel="stylesheet">
+            <link href="../_assets/other/sirprize/dobolo/assets/calendar.css" rel="stylesheet">
+            <link href="../_assets/frontend-styles/docs.css" rel="stylesheet">
+
+            <!--[if lt IE 9]>
+                <script src="../_assets/other/twbs/bootstrap/docs-assets/js/html5shiv.js"></script>
+                <script src="../_assets/other/twbs/bootstrap/docs-assets/js/respond.min.js"></script>
+            <![endif]-->
+        {% endif %}
+
+        <style>
+            .scrollspy-example-scroll-section {
+                height: 200px;
+                overflow: auto;
+                position: relative;
+            }
+            
+            .scrollspy-example-scroll-section section {
+                margin: 0;
+                padding: 0;
+                height: 50em;
+            }
+            
+            .scrollspy-example-scroll-section section h1 {
+                margin: 0;
+                padding: 0;
+                border: 0;
+            }
+        </style>
     </head>
 
-    <body data-dojo-type="dobolo/ScrollSpy" data-dojo-props="targetSelector: '.bs-docs-sidenav', offsetsSelector: 'section.spy', offsetTop: 70, wait: 100">
-        {% include navbar.html %}
-
-        <!-- Subhead -->
-        <header class="jumbotron subhead" id="overview">
+    <body data-dojo-type="dobolo/ScrollSpy" data-dojo-props="targetSelector: '.bs-sidenav', offsetsSelector: '.bs-docs-section', offsetTop: 70, wait: 100">
+        <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
             <div class="container">
-                <h1>Dobolo</h1>
-                <p class="lead">Dojo Bootstrap Love</p>
+                <div class="navbar-header">
+                    <a href="http://github.com/sirprize/dobolo" class="navbar-brand">dobolo on Github</a>
+                </div>
             </div>
         </header>
 
-        <div class="container">
+        <div class="jumbotron">
+            <div class="container">
+                <h1>dobolo</h1>
+                <p>Dojo Bootstrap Love</p>
+            </div>
+        </div>
 
-            <!-- Docs nav -->
+        <div class="container">
             <div class="row">
-                <div class="span3 bs-docs-sidebar">
-                    <script>
-                        var offsetTop = function () {
-                            return document.width <= 980 ? 245 : 195;
-                        }
-                    </script>
-                    
-                    <ul class="nav nav-list bs-docs-sidenav" data-dojo-type="dobolo/Affix" data-dojo-props="offsetTop: offsetTop">
-                        <li><a href="#affix"><i class="icon-chevron-right"></i> Affix</a></li>
-                        <li><a href="#alert"><i class="icon-chevron-right"></i> Alert</a></li>
-                        <li><a href="#button"><i class="icon-chevron-right"></i> Button</a></li>
-                        <li><a href="#datepickerinput"><i class="icon-chevron-right"></i> DatepickerInput</a></li>
-                        <li><a href="#scrollspy"><i class="icon-chevron-right"></i> ScrollSpy</a></li>
-                    </ul>
+                <div class="col-md-3">
+                    <div class="bs-sidebar hidden-print" data-dojo-type="dobolo/Affix" data-dojo-props="offsetTop: 200">
+                        <ul class="nav bs-sidenav">
+                            <li><a href="#affix">Affix</a></li>
+                            <li><a href="#alert">Alert</a></li>
+                            <li><a href="#button">Button</a></li>
+                            <li><a href="#datepickerinput">DatepickerInput</a></li>
+                            <li><a href="#scrollspy">ScrollSpy</a></li>
+                        </ul>
+                    </div>
                 </div>
-            
-                <div class="span9">
-                    
+
+                <div class="col-md-9" role="main">
                     <!-- Affix -->
-                    <section id="affix" class="spy">
+                    <div id="affix" class="bs-docs-section">
                         <div class="page-header">
                             <h1>Affix</h1>
                             <p>Add affix behavior to any element. Use offsets to define when to toggle the pinning of an element on and off.</p>
                         </div>
                         
-                        <div class="bs-docs-example">
+                        <div class="bs-example">
                             The subnavigation on the left is a live demo of the <code>Affix</code> module.
                         </div>
                         
                         <h3>Declarative</h3>
                         {% capture snippet %}{% include index/affix.html %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        <pre class="prettyprint">{{ snippet | escape }}</pre>
                         
                         <h3>Programmatic</h3>
                         {% capture snippet %}{% include index/affix.js %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        <pre class="prettyprint">{{ snippet | escape }}</pre>
                         
                         <h3>Properties</h3>
                         <table class="table table-bordered">
@@ -92,26 +130,26 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </section>
+                    </div>
                     
                     <!-- Alert -->
-                    <section id="alert" class="spy">
+                    <div id="alert" class="bs-docs-section">
                         <div class="page-header">
                             <h1>Alert</h1>
-                            <p><a href="{{ alertCssDoc }}">Find the Bootstrap CSS reference for alerts</a> on the Bootstrap website. For the closing animation to work, please make sure to reference the Bootstrap <code>component-animations.less</code> stylesheet.</p>
+                            <p>Find the <a href="{{ alertCssDoc }}">Bootstrap CSS reference for alerts</a> on the Bootstrap website.</p>
                         </div>
                         
-                        <div class="bs-docs-example">
+                        <div class="bs-example">
                             {% include index/alert.html %}
                         </div>
                         
                         <h3>Declarative</h3>
                         {% capture snippet %}{% include index/alert.html %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        <pre class="prettyprint">{{ snippet | escape }}</pre>
                         
                         <h3>Programmatic</h3>
                         {% capture snippet %}{% include index/alert.js %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        <pre class="prettyprint">{{ snippet | escape }}</pre>
                         
                         <h3>Properties</h3>
                         <table class="table table-bordered">
@@ -168,56 +206,56 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </section>
+                    </div>
                     
                     <!-- Button -->
-                    <section id="button" class="spy">
+                    <div id="button" class="bs-docs-section">
                         <div class="page-header">
                             <h1>Button</h1>
-                            <p>Buttons have the same API as <a href="{{ buttonDijitDoc }}">dijit/form/Button</a> plus the properties and methods listed below. <a href="{{ buttonCssDoc }}">Find the Bootstrap CSS reference for buttons</a> on the Bootstrap website.</p>
+                            <p>Find the <a href="{{ buttonCssDoc }}">Bootstrap CSS reference for buttons</a> on the Bootstrap website.</p>
                         </div>
                         
                         <h2>Stateful Button</h2>
                         
-                        <div class="bs-docs-example">
+                        <div class="bs-example">
                             {% include index/button-stateful.html %}
                         </div>
                         
                         <h3>Declarative</h3>
                         {% capture snippet %}{% include index/button-stateful.html %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        <pre class="prettyprint">{{ snippet | escape }}</pre>
                         
                         <h3>Programmatic</h3>
                         {% capture snippet %}{% include index/button-stateful.js %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        <pre class="prettyprint">{{ snippet | escape }}</pre>
                         
                         <h2>Checkbox Button</h2>
                         
-                        <div class="bs-docs-example">
+                        <div class="bs-example">
                             {% include index/button-checkbox.html %}
                         </div>
                         
                         <h3>Declarative</h3>
                         {% capture snippet %}{% include index/button-checkbox.html %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        <pre class="prettyprint">{{ snippet | escape }}</pre>
                         
                         <h3>Programmatic</h3>
                         {% capture snippet %}{% include index/button-checkbox.js %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        <pre class="prettyprint">{{ snippet | escape }}</pre>
                         
                         <h2>Radio Button</h2>
                         
-                        <div class="bs-docs-example">
+                        <div class="bs-example">
                             {% include index/button-radio.html %}
                         </div>
                         
                         <h3>Declarative</h3>
                         {% capture snippet %}{% include index/button-radio.html %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        <pre class="prettyprint">{{ snippet | escape }}</pre>
                         
                         <h3>Programmatic</h3>
                         {% capture snippet %}{% include index/button-radio.js %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        <pre class="prettyprint">{{ snippet | escape }}</pre>
                         
                         
                         <h3>Properties</h3>
@@ -276,26 +314,26 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </section>
+                    </div>
                     
                     <!-- DatepickerInput -->
-                    <section id="datepickerinput" class="spy">
+                    <div id="datepickerinput" class="bs-docs-section">
                         <div class="page-header">
                             <h1>DatepickerInput</h1>
-                            <p>Dropdown calendar to set a date into an input field. Please make sure to reference the Dobolo <code>calender.less</code> and Bootstrap <code>dropdowns.less</code> stylesheets. The <code>locale</code> for the datepicker can be set in <code>dojoConfig</code>.
+                            <p>Dropdown calendar to set a date into an input field. Please make sure to reference the Dobolo <code>calender.css</code> stylesheet. The <code>locale</code> for the datepicker can be set in <code>dojoConfig</code>.
                         </div>
                         
-                        <div class="bs-docs-example">
+                        <div class="bs-example">
                             {% include index/datepickerinput.html %}
                         </div>
                         
                         <h3>Declarative</h3>
                         {% capture snippet %}{% include index/datepickerinput.html %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        <pre class="prettyprint">{{ snippet | escape }}</pre>
                         
                         <h3>Programmatic</h3>
                         {% capture snippet %}{% include index/datepickerinput.js %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        <pre class="prettyprint">{{ snippet | escape }}</pre>
                         
                         <h3>Properties</h3>
                         <table class="table table-bordered">
@@ -309,7 +347,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>date</td>
+                                    <td>value</td>
                                     <td>Date</td>
                                     <td></td>
                                     <td></td>
@@ -345,48 +383,27 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </section>
-                    
-                    {% comment %}
-                    <!-- Calendar -->
-                    <section id="datepickerinput" class="spy">
-                        <div class="page-header">
-                            <h1>Calendar</h1>
-                            <p>It's also possible to use the calendar standalone. Please make sure to reference the Dobolo <code>calender.less</code> stylesheet. The <code>locale</code> for the calendar can be set in <code>dojoConfig</code>.
-                        </div>
-                        
-                        <div class="bs-docs-example">
-                            {% include index/calendar.html %}
-                        </div>
-                        
-                        <h3>Declarative</h3>
-                        {% capture snippet %}{% include index/calendar.html %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
-                        
-                        <h3>Programmatic</h3>
-                        {% capture snippet %}{% include index/calendar.js %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
-                    </section>
-                    {% endcomment %}
+                    </div>
                     
                     <!-- ScrollSpy -->
-                    <section id="scrollspy" class="spy">
+                    <div id="scrollspy" class="bs-docs-section">
                         <div class="page-header">
                             <h1>ScrollSpy</h1>
                         </div>
                         
-                        <div class="bs-docs-example">
+                        <div class="bs-example">
                             <p>This page with the subnavigation on the left is a live demo of the <code>ScrollSpy</code> module applied to <code>&lt;body&gt;</code> and below is an example of <code>ScrollSpy</code> applied to an element with <code>overflow: auto</code></p>
                             {% include index/scrollspy.html %}
                         </div>
                         
                         <h3>Declarative</h3>
+                        <p>When using ScrollSpy on <code>&lt;body&gt;</code>, make sure to start the parser on the <code>&lt;html&gt;</code> element: <code>parser.parse(query('html')[0]);</code></p>
                         {% capture snippet %}{% include index/scrollspy.html %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        <pre class="prettyprint">{{ snippet | escape }}</pre>
                         
                         <h3>Programmatic</h3>
                         {% capture snippet %}{% include index/scrollspy.js %}{% endcapture %}
-                        <pre class="prettyprint linenums">{{ snippet | escape }}</pre>
+                        <pre class="prettyprint">{{ snippet | escape }}</pre>
                         
                         <h3>Properties</h3>
                         <table class="table table-bordered">
@@ -420,13 +437,45 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </section>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <footer class="bs-footer" role="contentinfo">
+            <div class="container">
+                <p class="pull-right"><a href="#">Back to top</a></p>
+                <p>Big thanks go out to the <a href="http://dojotoolkit.org">Dojo community</a> and the <a href="http://getbootstrap.com/">Twitter Bootstrap crew</a></p>
+                <p>dobolo is written by <a href="http://sirprize.me">sirprize</a> and it is released under the <a href="http://opensource.org/licenses/mit-license.php">MIT license</a>.</p>
+                <p>This project is hosted on <a href="http://github.com/sirprize/dobolo">Github</a> and this documentation has been generated with <a href="http://github.com/sirprize/dobolo-doc">dobolo-doc</a></p>
+            </div>
+        </footer>
         
-        {% include footer.html %}
-        {% include scripts.html %}
-        {% include analytics.html %}
+        {% if site.env == "dev" %}
+            <script src="../assets/other/google-code-prettify/prettify.js"></script>
+            <script src="../assets/scripts/config.js"></script>
+            <script src="../assets/vendor/dojo/dojo/dojo.js"></script>
+            <script src="../assets/scripts/index.js"></script>
+        {% else %}
+            <script src="../_assets/other/google-code-prettify/prettify.js"></script>
+            <script data-dojo-config="async: true, parseOnLoad: true" src="../_assets/dojo/dojo.js"></script>
+            <script src="../_assets/frontend/index.js"></script>
+        {% endif %}
+        
+        {% comment %}
+            The script is commented out for development only. Commenting is removed by Phing during deployment build time.
+        {% endcomment %}
+
+        <script>/* Google Analytics
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-35397940-1']);
+            _gaq.push(['_trackPageview']);
+
+            (function() {
+                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+            })();
+        End Google Analytics */</script>
     </body>
 </html>
